@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Shooting Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="./img/icon.png">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-score">Score: <span id="score">0</span></div>
+    <div class="player" id="player"></div>
+    <div class="obstacles" id="obstacles"></div>
+    <div class="game-over" id="game-over">
+      <h2>Game Over</h2>
+      <p>Your Score: <span id="final-score">0</span></p>
+      <button id="restart-button">다시 시작</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").then((registration) => {
+          console.log("ServiceWorker 등록 완료:", registration.scope);
+        }, (err) => {
+          console.log("ServiceWorker 등록 실패:", err);
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
